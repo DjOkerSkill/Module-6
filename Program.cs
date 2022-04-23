@@ -2,21 +2,71 @@
 
 namespace ConsoleApp4
 {
-    public class Pen
+    class Triangle 
     {
-        public string color;
-        public int cost;
+        double side1;
+        double side2;
+        double side3;
 
-        public Pen() 
-        {
-            color = "Black";
-            cost = 100;
+        public Triangle(double _side1, double _side2, double _side3) 
+        { 
+            side1 = _side1;
+            side2 = _side2;
+            side3 = _side3;
+        }
+        
+        public double GetSquareTriangle() 
+        {  
+            double p = (side1+ side2 + side3)/2 ;
+
+            return Math.Sqrt(p * (p - side1) * (p - side2) * (p - side3));
         }
 
-        public Pen(string penColor, int pencost) 
+        public double GetPerimetreTriangle()
+        {
+            return (side1 + side2 + side3);
+        }
+    }
+
+    class Circle 
+    {
+        const double PI = 3.14;
+        int radius;
+
+        public Circle(int _radius) 
         { 
-            color=penColor;
-            cost = pencost;
+            radius = _radius;
+        }
+
+        public double GetSquareCircle() 
+        {
+            return (PI * radius * radius) / 2;
+        }
+
+        public double GetPerimetreCircle()
+        {
+            return 2 * PI * radius;
+        }
+
+    }
+
+    class Square 
+    {
+        int side;
+
+        public Square(int _side) 
+        { 
+            side= _side;
+        }
+
+        public int GetSquaresquare() 
+        {
+            return side * side;
+        }
+
+        public double GetPerimetresquare()
+        {
+            return 4 * side;
         }
 
     }
@@ -25,7 +75,38 @@ namespace ConsoleApp4
     {
         static void Main(string[] args)
         {
-            
+            // Вычисление площади и периметра треугольника
+            {
+                Triangle triangle = new Triangle(5, 7, 10);
+
+                double squareTriangle = triangle.GetSquareTriangle();
+                Console.WriteLine(squareTriangle);
+
+                squareTriangle = triangle.GetPerimetreTriangle();
+                Console.WriteLine(squareTriangle);
+            }
+
+             // Вычисление площади и периметра круга
+            {
+                Circle circle = new Circle(5);
+                double squareCircle = circle.GetSquareCircle();
+                Console.WriteLine(squareCircle);
+
+                squareCircle = circle.GetPerimetreCircle();
+                Console.WriteLine(squareCircle);
+            }
+
+            // Вычисление площади и периметра квадрата
+            { 
+                Square squre = new Square(5);
+
+                double squareCircle = squre.GetSquaresquare();
+                Console.WriteLine(squareCircle);
+
+                squareCircle = squre.GetPerimetresquare();
+                Console.WriteLine(squareCircle);
+            }
         }
+
     }
 }
