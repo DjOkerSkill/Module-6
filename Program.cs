@@ -4,11 +4,29 @@ namespace ConsoleApp4
 {
     class Triangle 
     {
-        double side1;
-        double side2;
-        double side3;
+        int side1;
+        int side2;
+        int side3;
 
-        public Triangle(double _side1, double _side2, double _side3) 
+        public int Side1 
+        { 
+            get { return side1; }
+            set { if(value>0 && side2+side3<value) side1 = value; }
+        }
+
+        public int Side2
+        {
+            get { return side2; }
+            set { if (value > 0 && side1 + side3 < value) side2 = value; }
+        }
+
+        public int Side3
+        {
+            get { return side3; }
+            set { if (value > 0 && side1 + side2 < value) side3 = value; }
+        }
+
+        public Triangle(int _side1, int _side2, int _side3) 
         { 
             side1 = _side1;
             side2 = _side2;
@@ -17,7 +35,7 @@ namespace ConsoleApp4
         
         public double GetSquareTriangle() 
         {  
-            double p = (side1+ side2 + side3)/2 ;
+            double p = (double)(side1 + side2 + side3)/2 ;
 
             return Math.Sqrt(p * (p - side1) * (p - side2) * (p - side3));
         }
